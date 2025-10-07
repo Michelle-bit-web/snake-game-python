@@ -16,3 +16,13 @@ class Scoreboard(Turtle):
     def update_scoreboard(self):
         self.write(f"Score: {self.score}", False, align=ALIGNMENT, font=FONT)
 
+    def increase_score(self):
+        self.clear()
+        self.score += 1
+        self.update_scoreboard()
+
+    def show_endscreen(self):
+        self.goto(0, 0)
+        self.write(f"GAME OVER", False, align=ALIGNMENT, font=FONT)
+        self.goto(0, -60)
+        self.write(f"Press 'r' to replay\nClick window to exit", False, align=ALIGNMENT, font=FONT_GAMEOVER)

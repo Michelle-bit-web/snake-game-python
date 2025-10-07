@@ -4,6 +4,7 @@ import time
 from modules.scoreboard_module import Scoreboard
 from modules.snake_module import Snake
 from modules.food_module import Food
+from modules.scoreboard_module import Scoreboard
 
 screen = Screen()
 
@@ -22,6 +23,7 @@ def main():
     game_over = False
     snake = Snake()
     food = Food()
+    scoreboard = Scoreboard()
 
     #Event Listener
     screen.listen()
@@ -36,12 +38,12 @@ def main():
         screen.update()
         time.sleep(0.1)
         snake.move()
-        scoreboard = Scoreboard()
 
         # Detect collision with food.
         if snake.snake_segments[0].distance(food) < 15:
             food.random_position()
             snake.extend()
+            scoreboard.increase_score()
 
         # Detect collision with wall.
         if (-280 > snake.snake_segments[0].xcor()
@@ -49,12 +51,14 @@ def main():
             or -280 > snake.snake_segments[0].ycor()
             or snake.snake_segments[0].ycor() > 280):
             game_over = True
+            scoreboard.show_endscreen()
 
         # Detect collision with tail.
         if len(snake.snake_segments) > 3:
             for segment in snake.snake_segments[1:]:
                 if snake.snake_segments[0].distance(segment) < 10:
                     game_over = True
+                    scoreboard.show_endscreen()
 
     screen.exitonclick()
 

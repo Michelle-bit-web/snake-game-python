@@ -45,7 +45,13 @@ def main():
             or snake.snake_segments[0].xcor() > 280
             or -280 > snake.snake_segments[0].ycor()
             or snake.snake_segments[0].ycor() > 280):
-        game_over = True
+            game_over = True
+
+        # Detect collision with tail.
+        if len(snake.snake_segments) > 3:
+            for segment in snake.snake_segments[1:]:
+                if snake.snake_segments[0].distance(segment) < 10:
+                    game_over = True
 
     screen.exitonclick()
 

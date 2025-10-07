@@ -1,5 +1,6 @@
 from turtle import Screen
 import time
+from modules.snake_module import Snake
 
 screen = Screen()
 
@@ -16,6 +17,7 @@ def main():
     screen.title("My Snake Game")
     screen.tracer(0)
     game_over = False
+    snake = Snake()
 
     #Event Listener
     screen.listen()

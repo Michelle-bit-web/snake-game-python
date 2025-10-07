@@ -8,6 +8,7 @@ A classic Snake game built entirely in Python using the `turtle` graphics librar
 - Game Over when hitting walls or itself
 - Replay with key **R**
 - Scoreboard display
+- Tracking your personal highscores
 
 ## 🎮 Technologies and Techniques
 - Python 3.10+

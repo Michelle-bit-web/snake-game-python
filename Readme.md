@@ -13,6 +13,9 @@ A classic Snake game built entirely in Python using the `turtle` graphics librar
 - Python 3.10+
 - (Optional) PyCharm or VSCode
 
+## 🖼️ Preview
+![Game Preview](./images/snake_game.png)
+
 ## ▶️ Run the Game
 
 ```bash

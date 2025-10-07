@@ -1,0 +1,19 @@
+# 🐍 Python Snake Game
+
+A classic Snake game built entirely in Python using the `turtle` graphics library.
+
+## 🎮 Features
+- Control the snake with the arrow keys
+- Snake grows when eating food
+- Game Over when hitting walls or itself
+- Replay with key **R**
+- Scoreboard display
+
+## 🧰 Requirements
+- Python 3.10+
+- (Optional) PyCharm or VSCode
+
+## ▶️ Run the Game
+
+```bash
+   python main.py

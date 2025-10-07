@@ -4,11 +4,12 @@ FONT = ("Arial", 20, "normal")
 FONT_GAMEOVER = ("Arial", 16, "normal")
 
 class Scoreboard(Turtle):
-    def __init__(self, highscore):
+    def __init__(self):
         super().__init__()
         self.up()
         self.score = 0
-        self.highscore = highscore
+        with open("highscore_data.txt") as data:
+            self.highscore = int(data.read())
         self.color("white")
         self.goto(0, 260)
         self.update_scoreboard()
@@ -28,6 +29,8 @@ class Scoreboard(Turtle):
     def show_endscreen(self):
         if self.check_new_highscore():
             self.highscore = self.score
+            with open("highscore_data.txt", mode="w") as data:
+                data.write(f"{self.highscore}")
         self.score = 0
         self.update_scoreboard()
         self.goto(0, 0)

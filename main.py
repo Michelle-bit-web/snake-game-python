@@ -7,7 +7,6 @@ from modules.food_module import Food
 from modules.scoreboard_module import Scoreboard
 
 screen = Screen()
-highscore = 0
 
 def restart():
     global screen
@@ -17,7 +16,6 @@ def restart():
 
 def main():
     global screen
-    global highscore
     screen.setup(width=600, height=600) #keyword arguments
     screen.bgcolor("black")
     screen.title("My Snake Game")
@@ -25,7 +23,7 @@ def main():
     game_over = False
     snake = Snake()
     food = Food()
-    scoreboard = Scoreboard(highscore)
+    scoreboard = Scoreboard()
 
     #Event Listener
     screen.listen()
@@ -54,7 +52,6 @@ def main():
             or snake.snake_segments[0].ycor() > 280):
             game_over = True
             scoreboard.show_endscreen()
-            highscore = scoreboard.highscore
 
         # Detect collision with tail.
         if len(snake.snake_segments) > 3:
@@ -62,7 +59,6 @@ def main():
                 if snake.snake_segments[0].distance(segment) < 10:
                     game_over = True
                     scoreboard.show_endscreen()
-                    highscore = scoreboard.highscore
 
     screen.exitonclick()
 

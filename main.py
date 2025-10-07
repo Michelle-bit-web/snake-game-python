@@ -38,7 +38,14 @@ def main():
         # Detect collision with food.
         if snake.snake_segments[0].distance(food) < 15:
             food.random_position()
+            snake.extend()
 
+        # Detect collision with wall.
+        if (-280 > snake.snake_segments[0].xcor()
+            or snake.snake_segments[0].xcor() > 280
+            or -280 > snake.snake_segments[0].ycor()
+            or snake.snake_segments[0].ycor() > 280):
+        game_over = True
 
     screen.exitonclick()
 

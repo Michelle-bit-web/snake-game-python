@@ -1,6 +1,7 @@
 from turtle import Screen
 import time
 from modules.snake_module import Snake
+from modules.food_module import Food
 
 screen = Screen()
 
@@ -18,6 +19,7 @@ def main():
     screen.tracer(0)
     game_over = False
     snake = Snake()
+    food = Food()
 
     #Event Listener
     screen.listen()
@@ -32,6 +34,11 @@ def main():
         screen.update()
         time.sleep(0.1)
         snake.move()
+
+        # Detect collision with food.
+        if snake.snake_segments[0].distance(food) < 15:
+            food.random_position()
+
 
     screen.exitonclick()
 

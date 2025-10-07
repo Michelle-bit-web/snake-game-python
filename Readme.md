@@ -9,6 +9,11 @@ A classic Snake game built entirely in Python using the `turtle` graphics librar
 - Replay with key **R**
 - Scoreboard display
 
+## 🎮 Technologies and Techniques
+- Python 3.10+
+- Object Oriented Programming
+- Turtle Graphics
+
 ## 🧰 Requirements
 - Python 3.10+
 - (Optional) PyCharm or VSCode

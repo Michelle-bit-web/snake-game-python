@@ -3,12 +3,13 @@
 A classic Snake game built entirely in Python using the `turtle` graphics library.
 
 ## 🎮 Features
-- Control the snake with the arrow keys
+- Multi- and Single Player option
+- Control the snake with the arrow keys or w/s/a/d for the second player
 - Snake grows when eating food
 - Game Over when hitting walls or itself
 - Replay with key **R**
 - Scoreboard display
-- Tracking your personal highscores
+- Tracking your personal highscores (Single Player Mode)
 
 ## 🎮 Technologies and Techniques
 - Python 3.10+

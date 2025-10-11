@@ -1,65 +1,17 @@
-from turtle import Screen
-import time
-
-from modules.scoreboard_module import Scoreboard
-from modules.snake_module import Snake
-from modules.food_module import Food
-from modules.scoreboard_module import Scoreboard
-
-screen = Screen()
-
-def restart():
-    global screen
-    screen.clearscreen()
-    main()
-    print("restarted")
+from modules.game_module import Game  # ← ggf. Dateiname anpassen
 
 def main():
-    global screen
-    screen.setup(width=600, height=600) #keyword arguments
-    screen.bgcolor("black")
-    screen.title("My Snake Game")
-    screen.tracer(0)
-    game_over = False
-    snake = Snake()
-    food = Food()
-    scoreboard = Scoreboard()
+    user_input = None
+    while user_input not in ["1", "2"]:
+        from turtle import Screen
+        screen = Screen()
+        user_input = screen.textinput("Players", "Single Player or Two Players? Type 1 or 2")
+        if user_input == "exit":
+            screen.bye()
 
-    #Event Listener
-    screen.listen()
-    screen.onkey(key="Up", fun=snake.move_up)
-    screen.onkey(key="Down", fun=snake.move_down)
-    screen.onkey(key="Left", fun=snake.move_left)
-    screen.onkey(key="Right", fun=snake.move_right)
-    screen.onkey(key="r", fun=restart)
+    players = int(user_input)
+    game = Game(players)
+    game.game_loop()
 
-    #Game running
-    while not game_over:
-        screen.update()
-        time.sleep(0.1)
-        snake.move()
-
-        # Detect collision with food.
-        if snake.snake_segments[0].distance(food) < 15:
-            food.random_position()
-            snake.extend()
-            scoreboard.increase_score()
-
-        # Detect collision with wall.
-        if (-280 > snake.snake_segments[0].xcor()
-            or snake.snake_segments[0].xcor() > 280
-            or -280 > snake.snake_segments[0].ycor()
-            or snake.snake_segments[0].ycor() > 280):
-            game_over = True
-            scoreboard.show_endscreen()
-
-        # Detect collision with tail.
-        if len(snake.snake_segments) > 3:
-            for segment in snake.snake_segments[1:]:
-                if snake.snake_segments[0].distance(segment) < 10:
-                    game_over = True
-                    scoreboard.show_endscreen()
-
-    screen.exitonclick()
-
-main()
+if __name__ == "__main__":
+    main()
